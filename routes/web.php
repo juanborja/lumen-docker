@@ -15,5 +15,12 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 $router->get('/holer', function () use ($router) {
-    return 'Hiafa';
+    return 'Hi45a';
 });
+$router->get(
+    'test', 
+    [
+       'uses' => 'ExampleController@buscar'
+    ]
+);
+
