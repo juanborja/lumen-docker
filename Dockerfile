@@ -3,7 +3,6 @@ RUN a2enmod rewrite; \
     chown -R www-data:www-data /var/www/html; \
     docker-php-ext-install pdo_mysql;\
     /etc/init.d/apache2 restart;
-COPY . /var/www/
 COPY ./config/apache2.conf /etc/apache2/apache2.conf
 WORKDIR /var/www/
 RUN apt-get update \
@@ -11,5 +10,5 @@ RUN apt-get update \
         vim
 RUN chmod -R 755 html
 RUN  mv public html
-WORKDIR /var/www/html
 EXPOSE 80
+ENTRYPOINT mv public html&& /bin/bash
